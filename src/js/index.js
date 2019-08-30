@@ -1,4 +1,8 @@
+import axios from 'axios';
+import toastr from 'toastr';
 import '../css/style.css';
+
+const AUTH_URL = 'https://ci-auth-service.herokuapp.com/api/v1/auth';
 
 const createAccount = document.getElementById('createAccount');
 const loginAccount = document.getElementById('loginAccount');
@@ -16,9 +20,32 @@ createAccount.addEventListener('click', () => {
 });
 
 loginBtn.addEventListener('click', () => {
+  const form = document.getElementById('loginForm');
 
+  axios.post(`${AUTH_URL}/login`, {
+    email: form[0].value,
+    password: form[1].value
+  })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
-loginBtn.addEventListener('click', () => {
-
+signupBtn.addEventListener('click', () => {
+  const form = document.getElementById('signupForm');
+  axios.post(`${AUTH_URL}/signup`, {
+    name: form[0].value,
+    email: form[1].value,
+    password: form[2].value,
+    confirm_password: form[3].value
+  })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });

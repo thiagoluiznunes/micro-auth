@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "build": "./node_modules/webpack/bin/webpack.js --mode=development"
+    "build": "./node_modules/webpack/bin/webpack.js --mode=development",
+    "dev": "npm run build && npm start"
   },
   "dependencies": {
     "axios": "0.19.0",
@@ -13,8 +14,7 @@
     "express": "4.16.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "nodemon": "1.19.1",
-    "toastr": "2.1.4"
+    "nodemon": "1.19.1"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
@@ -27,6 +27,7 @@
     "html-webpack-plugin": "3.2.0",
     "mini-css-extract-plugin": "0.8.0",
     "postcss-loader": "3.0.0",
+    "toastr": "2.1.4",
     "webpack": "4.39.3",
     "webpack-cli": "3.3.7"
   }
