@@ -27,10 +27,12 @@ loginBtn.addEventListener('click', () => {
     password: form[1].value
   })
     .then((res) => {
-      console.log(res);
+      toastr.success('Login realizado!');
     })
     .catch((error) => {
-      console.log(error);
+      if (error.response) {
+        toastr.error(error.response.data.errors);
+      }
     });
 });
 
@@ -43,9 +45,11 @@ signupBtn.addEventListener('click', () => {
     confirm_password: form[3].value
   })
     .then((res) => {
-      console.log(res);
+      toastr.success('Usuário cadastrado com sucesso!');
     })
     .catch((error) => {
-      console.log(error);
+      if (error.response) {
+        toastr.error(error.response.data.errors);
+      }
     });
 });
