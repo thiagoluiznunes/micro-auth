@@ -3,43 +3,28 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    index: './src/js/index.js',
-  },
+  entry: './src/js/index.js',
   output: {
-    filename: 'js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
-            cacheDirectory: true,
+            presets: ['@babel/preset-env']
           }
         }
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: { minimize: true }
-          }
-        ]
       },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: './dist/css'
-            }
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
@@ -48,17 +33,39 @@ module.exports = {
             loader: 'postcss-loader'
           },
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'images'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff|woff2|ttf|otf|eot)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'fonts'
+            }
+          }
+        ]
       }
     ]
   },
+
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: 'index.html'
     }),
-    require('autoprefixer'),
     new MiniCssExtractPlugin({
-      filename: '[name].bundle.css',
+      filename: '/css/[name].css',
       chunkFilename: '[id].css',
       ignoreOrder: false,
     })

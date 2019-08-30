@@ -1,3 +1,5 @@
+import '../css/style.css';
+
 const createAccount = document.getElementById('createAccount');
 const loginAccount = document.getElementById('loginAccount');
 const loginBtn = document.getElementById('loginBtn');
