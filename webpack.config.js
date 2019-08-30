@@ -5,7 +5,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     index: './src/js/index.js',
-    test: './src/js/test.js'
   },
   output: {
     filename: 'js/[name].bundle.js',
@@ -39,7 +38,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: './dist'
+              publicPath: './dist/css'
             }
           },
           {
@@ -59,7 +58,7 @@ module.exports = {
     }),
     require('autoprefixer'),
     new MiniCssExtractPlugin({
-      filename: 'bundle.css',
+      filename: '[name].bundle.css',
       chunkFilename: '[id].css',
       ignoreOrder: false,
     })
