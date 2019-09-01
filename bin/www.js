@@ -1,10 +1,13 @@
-#!/usr/bin/env node
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import app from '../app';
+import debug from 'debug';
+import http from 'http';
 
-const app = require('../app');
-const debug = require('debug')('micro-auth:server');
-const http = require('http');
+debug('auth:server');
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || process.argv[2] || '3000');
+
 app.set('port', port);
 
 const server = http.createServer(app);
@@ -14,18 +17,19 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 function normalizePort(val) {
+  if (process.env.NODE_ENV === 'test') {
+    return 3001;
+  }
   const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
     return val;
   }
-
   if (port >= 0) {
     // port number
     return port;
   }
-
   return false;
 }
 
@@ -60,3 +64,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+export { server, normalizePort, onError };
