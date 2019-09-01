@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "./node_modules/.bin/nodemon --exec babel-node ./bin/www",
     "build": "./node_modules/webpack/bin/webpack.js --mode=development",
     "dev": "npm run build && npm start"
   },
@@ -17,8 +17,11 @@
     "nodemon": "1.19.1"
   },
   "devDependencies": {
+    "@babel/cli": "7.5.5",
     "@babel/core": "7.5.5",
+    "@babel/node": "7.5.5",
     "@babel/preset-env": "7.5.5",
+    "@babel/runtime-corejs3": "7.5.5",
     "autoprefixer": "9.6.1",
     "babel-loader": "8.0.6",
     "css-loader": "3.2.0",
