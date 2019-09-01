@@ -6,7 +6,7 @@ import http from 'http';
 
 debug('auth:server');
 
-const port = normalizePort(process.env.PORT || process.argv[2] || '3000');
+const port = normalizePort(process.env.PORT || process.argv[2] || '4000');
 
 app.set('port', port);
 
