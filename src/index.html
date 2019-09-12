@@ -11,20 +11,20 @@
 <body>
   <div class="login-page">
     <div class="form">
-      <h1 class="auth-title">Auth</h1>
+      <h1 class="auth-title">Cayambe</h1>
+      <form id="loginForm" class="login-form">
+        <input type="text" placeholder="username" />
+        <input type="password" placeholder="password" />
+        <button id="loginBtn">Confirmar</button>
+        <p class="message">Não possui uma conta? <a id="createAccount" href="#">Registre-se aqui.</a></p>
+      </form>
       <form id="signupForm" class="register-form">
         <input type="text" placeholder="name" />
         <input type="text" placeholder="email address" />
         <input type="password" placeholder="password" />
         <input type="password" placeholder="confirm password" />
-        <button id="signupBtn">create</button>
-        <p class="message">Already registered? <a id="loginAccount" href="#">Sign In</a></p>
-      </form>
-      <form id="loginForm" class="login-form">
-        <input type="text" placeholder="username" />
-        <input type="password" placeholder="password" />
-        <button id="loginBtn">login</button>
-        <p class="message">Not registered? <a id="createAccount" href="#">Create an account</a></p>
+        <button id="signupBtn">Registrar</button>
+        <p class="message">Já possui uma conta? <a id="loginAccount" href="#">Acesse aqui.</a></p>
       </form>
     </div>
   </div>

@@ -21,7 +21,6 @@ createAccount.addEventListener('click', () => {
 loginBtn.addEventListener('click', () => {
   const form = document.getElementById('loginForm');
   const url = hp.chooseUrlConnection();
-
   axios.post(`${url}/login`, {
     email: form[0].value,
     password: form[1].value
